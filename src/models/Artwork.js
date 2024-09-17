@@ -5,7 +5,10 @@ export class Artwork {
       this.height = data.height,
       this.width = data.width,
       this.originalLink = data.originalLink
-    this.imgUrls = data.imgUrls
+    this.rawImgUrl = data.imgUrls.raw
+    this.fullImgUrl = data.imgUrls.full
+    this.regularImgUrl = data.imgUrls.regular
+    this.smallImgUrl = data.imgUrls.small
     this.description = data.description
     this.altDescription = data.altDescription
     this.attribution = data.attribution
@@ -13,9 +16,6 @@ export class Artwork {
 
   }
 
-  get regularArtImg() {
-    return `https://images.unsplash.com/${this.imgUrls}`
-  }
 
 
 }

@@ -1,11 +1,15 @@
 <script setup>
 import { AppState } from "@/AppState.js";
+import Artwork from "@/components/Artwork.vue";
 import { artworkService } from "@/services/ArtworkService.js";
 import Pop from "@/utils/Pop.js";
 import { onMounted, computed } from "vue";
 
 
 const artworks = computed(() => AppState.artworks)
+const currentPage = computed(() => AppState.currentPage)
+const totalPages = computed(() => AppState.totalPages)
+
 
 onMounted(() => {
   discoverArt()
@@ -23,18 +27,25 @@ async function discoverArt() {
 </script>
 
 <template>
-  <h1>CodeWorks Institute of Fine Art</h1>
+  <div class="text-center">
+    <h1>CodeWorks Institute of Fine Art</h1>
+  </div>
 
   <div class="container">
     <section class="row">
+      <div class="col-12">
+        <div class="d-flex gap-4 my-2 align-items-center">
+          <button class="btn btn-outline-dark">Previous</button>
+          <span>Page {{ currentPage }} of {{ totalPages }}</span>
+          <button class="btn btn-outline-dark">Next</button>
+        </div>
 
+      </div>
 
       <!-- Start of art template -->
-      <div v-for="artwork in artworks" :key="artwork.i" class="artwork mb-3 col-3">
-        <img class="img-fluid rounded"
-          src="https://images.unsplash.com/photo-1579541814924-49fef17c5be5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YXJ0fGVufDB8fDB8fHww"
-          alt="">
-        {{ artwork.regularArtImg }}
+      <div v-for="artwork in artworks" :key="artwork.smallImgUrl" class="artwork card mb-3 col-3 bg-dark gap-2">
+        <Artwork :artProp="artwork" />
+
       </div>
 
 
