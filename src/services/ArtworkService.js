@@ -11,6 +11,14 @@ class ArtworkService {
     AppState.currentPage = response.data.page
     AppState.totalPages = response.data.pages
   }
+
+
+
+  async changePage(pageNumber) {
+    const response = await artAPI.get(`/?${pageNumber}`)
+    console.log('changing page number', response.data)
+  }
+
 }
 
 
