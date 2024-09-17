@@ -15,8 +15,9 @@ class ArtworkService {
 
 
   async changePage(pageNumber) {
-    const response = await artAPI.get(`/?${pageNumber}`)
-    console.log('changing page number', response.data)
+    const response = await artAPI.get(`?page=${pageNumber}`)
+    console.log('changing to page number', pageNumber, response.data)
+
   }
 
 }

@@ -27,7 +27,7 @@ async function discoverArt() {
 async function changePage(pageNumber) {
   try {
     await artworkService.changePage(pageNumber)
-
+    // const 
   }
   catch (error) {
     Pop.error(error);
@@ -46,9 +46,9 @@ async function changePage(pageNumber) {
     <section class="row">
       <div class="col-12">
         <div class="d-flex gap-4 my-2 align-items-center">
-          <button @click="changePage(currentPage - 1)" class="btn btn-outline-dark">Previous</button>
+          <button @click="changePage(currentPage - 1)" class="btn btn-outline-dark rounded-pill">Previous</button>
           <span>Page {{ currentPage }} of {{ totalPages }}</span>
-          <button @click="changePage(currentPage + 1)" class="btn btn-outline-dark">Next</button>
+          <button @click="changePage(currentPage + 1)" class="btn btn-outline-dark rounded-pill">Next</button>
         </div>
 
       </div>
